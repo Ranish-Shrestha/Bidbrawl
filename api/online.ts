@@ -1,6 +1,6 @@
-import { createOnlineApi } from '../server/online/api'
-import { withPusher } from '../server/online/realtime'
-import { withNeon } from '../server/online/sql'
+import { createOnlineApi } from '../server/online/api.js'
+import { withPusher } from '../server/online/realtime.js'
+import { withNeon } from '../server/online/sql.js'
 
 export default {
   async fetch(request: Request) {

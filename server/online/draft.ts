@@ -1,9 +1,9 @@
 import { randomInt } from 'node:crypto'
-import { createDeck } from '../../src/game/deck'
-import { gameReducer, initializeMatch } from '../../src/game/reducer'
-import { getMaxLegalBid, resolveSealedRound, validateBid } from '../../src/game/rules'
-import { getCurrentItemId, getCurrentOutcome, getDiscardCount, getRoundRef } from '../../src/game/selectors'
-import type { Category, MatchState, PlayerId, RoundRef } from '../../src/game/types'
+import { createDeck } from '../../src/game/deck.js'
+import { gameReducer, initializeMatch } from '../../src/game/reducer.js'
+import { getMaxLegalBid, resolveSealedRound, validateBid } from '../../src/game/rules.js'
+import { getCurrentItemId, getCurrentOutcome, getDiscardCount, getRoundRef } from '../../src/game/selectors.js'
+import type { Category, MatchState, PlayerId, RoundRef } from '../../src/game/types.js'
 
 const ROUND_DURATION_MS = 15_000
 

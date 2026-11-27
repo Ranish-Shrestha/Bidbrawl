@@ -1,5 +1,5 @@
-import { DECK_SIZE } from '../game/types'
-import type { Category, Item } from '../game/types'
+import { DECK_SIZE } from '../game/types.js'
+import type { Category, Item } from '../game/types.js'
 
 const slug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const emojiPattern = /\p{Extended_Pictographic}|\p{Regional_Indicator}|\u20e3/u

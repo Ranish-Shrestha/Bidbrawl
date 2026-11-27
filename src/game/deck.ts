@@ -1,6 +1,6 @@
-import { getActiveItems, validateCategory } from '../data/validateCategories'
-import { DECK_SIZE } from './types'
-import type { Category } from './types'
+import { getActiveItems, validateCategory } from '../data/validateCategories.js'
+import { DECK_SIZE } from './types.js'
+import type { Category } from './types.js'
 
 export function createSeededRandom(seed: number): () => number {
   let state = seed >>> 0

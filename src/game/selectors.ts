@@ -1,5 +1,5 @@
-import { getMaxLegalBid, getOpenSlots, isComplete } from './rules'
-import type { MatchState, Outcome, PlayerId, RoundRef } from './types'
+import { getMaxLegalBid, getOpenSlots, isComplete } from './rules.js'
+import type { MatchState, Outcome, PlayerId, RoundRef } from './types.js'
 
 export function getRoundRef(state: MatchState): RoundRef {
   return { matchId: state.matchId, roundNumber: state.deckIndex + 1 }

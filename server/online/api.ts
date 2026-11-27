@@ -1,10 +1,10 @@
-import { digest, equalDigest, mintSession, readSession } from './auth'
-import { readCommand, roomIdPattern } from './protocol'
-import { createRoom, joinRoom, mutateRoom, readRoom, result } from './rooms'
-import type { ApiResult } from './rooms'
-import type { Realtime } from './realtime'
-import { databaseTime } from './sql'
-import type { Database, Sql } from './sql'
+import { digest, equalDigest, mintSession, readSession } from './auth.js'
+import { readCommand, roomIdPattern } from './protocol.js'
+import { createRoom, joinRoom, mutateRoom, readRoom, result } from './rooms.js'
+import type { ApiResult } from './rooms.js'
+import type { Realtime } from './realtime.js'
+import { databaseTime } from './sql.js'
+import type { Database, Sql } from './sql.js'
 
 type Options = { database: Database; pepper: string; origin: string; cronSecret?: string; realtime?: Realtime }
 const minute = 60_000

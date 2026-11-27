@@ -1,11 +1,11 @@
-import { categories } from '../../src/data/categories'
-import type { LocalVote, PlayerId } from '../../src/game/types'
-import { digest, equalDigest, randomToken } from './auth'
-import { createOnlineDraft, getOnlineSnapshot, updateOnlineDraft } from './draft'
-import type { OnlineDraft } from './draft'
-import type { OnlineRequest } from './protocol'
-import { databaseTime } from './sql'
-import type { Sql } from './sql'
+import { categories } from '../../src/data/categories.js'
+import type { LocalVote, PlayerId } from '../../src/game/types.js'
+import { digest, equalDigest, randomToken } from './auth.js'
+import { createOnlineDraft, getOnlineSnapshot, updateOnlineDraft } from './draft.js'
+import type { OnlineDraft } from './draft.js'
+import type { OnlineRequest } from './protocol.js'
+import { databaseTime } from './sql.js'
+import type { Sql } from './sql.js'
 
 const minute = 60_000
 const lobbyLifetime = 30 * minute

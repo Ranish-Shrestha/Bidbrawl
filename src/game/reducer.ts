@@ -1,10 +1,10 @@
-import { categories } from '../data/categories'
-import { createDeck, createSeededRandom } from './deck'
-import { normalizePlayerName } from './names'
-import { getOpenSlots, isComplete, resolveRound, validateBid } from './rules'
-import { getRoundRef } from './selectors'
-import { MATCH_SCHEMA_VERSION, STARTING_BUDGET } from './types'
-import type { Category, GameAction, MatchState, PlayerId } from './types'
+import { categories } from '../data/categories.js'
+import { createDeck, createSeededRandom } from './deck.js'
+import { normalizePlayerName } from './names.js'
+import { getOpenSlots, isComplete, resolveRound, validateBid } from './rules.js'
+import { getRoundRef } from './selectors.js'
+import { MATCH_SCHEMA_VERSION, STARTING_BUDGET } from './types.js'
+import type { Category, GameAction, MatchState, PlayerId } from './types.js'
 
 export function findCategory(catalog: readonly Category[], id: string): Category | undefined {
   const matches = catalog.filter((category) => category.id === id)

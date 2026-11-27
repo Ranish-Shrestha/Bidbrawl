@@ -1,5 +1,5 @@
-import { ROSTER_SIZE } from './types'
-import type { MatchState, Outcome, PlayerId, PlayerState } from './types'
+import { ROSTER_SIZE } from './types.js'
+import type { MatchState, Outcome, PlayerId, PlayerState } from './types.js'
 
 export function getOpenSlots(player: PlayerState): number {
   return ROSTER_SIZE - player.roster.length
