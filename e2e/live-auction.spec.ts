@@ -42,11 +42,22 @@ test('plays Live Auction, restores a bid, and exports a playable portrait replay
   await button('Pass').click()
   await expect(page.getByText('Sam takes the card for $3')).toBeVisible()
 
-  for (let round = 2; round <= 12; round++) {
+  await button('Next Card').click()
+  await button('Reveal Card').click()
+  await expect(page.getByText('Sam · Player 2 to act')).toBeVisible()
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(320)
+  await button('Leave it to other player').click()
+  await expect(page.getByText('Alex · Player 1 to act')).toBeVisible()
+  await expect(page.getByText('$20', { exact: true })).toBeVisible()
+  await expect(button('Pass')).toBeVisible()
+  await button('Buy for $1').click()
+  await expect(page.getByText('Alex takes the card for $1')).toBeVisible()
+
+  for (let round = 3; round <= 12; round++) {
     await button('Next Card').click()
     await expect(page.getByRole('heading', { name: 'Mystery card' })).toBeVisible()
     await button('Reveal Card').click()
-    await button('Pass').click()
+    await button('Leave it to other player').or(button('Pass')).click()
     if (await button('Buy for $1').isVisible()) await button('Pass').click()
   }
   await button('View Final Showdown').click()

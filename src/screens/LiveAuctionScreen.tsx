@@ -106,7 +106,7 @@ export default function LiveAuctionScreen() {
           : panel === 'rules' ? <ol className="live-rule-list">
             <li>Reveal each card when you’re ready. Player 1 opens odd rounds and Player 2 opens even rounds. A full roster skips its turn.</li>
             <li>The first offer is $1. The other player raises by at least $1 or passes. Save $1 for each future pick.</li>
-            <li>Passing against an offer gives the card to the leader. If the opener passes, the other player can buy for $1 or pass too.</li>
+            <li>Before the first offer, “Leave it to other player” lets them buy the card for $1 or pass. Passing against an offer gives the card to the leader.</li>
             <li>With no offer, discard the card if both lineups can still fill. Otherwise, the player with more open slots takes it for $1. An alternating priority breaks equal-slot ties.</li>
           </ol> : null}
       </Dialog>
@@ -169,15 +169,17 @@ function RaiseControls({ range, opening, lastChance, dispatch }: {
   range: ReturnType<typeof getRaiseRange>; opening: boolean; lastChance: boolean; dispatch: (command: LiveCommand) => void
 }) {
   const [amount, setAmount] = useState(range?.min ?? 0)
+  const canLeaveCard = opening && !lastChance
   return (
     <Card className="live-controls">
       {range && range.min < range.max && <label className="live-range">Raise amount <strong>${amount}</strong>
         <input type="range" min={range.min} max={range.max} step={1} value={amount} aria-valuetext={`${amount} dollars`}
           onChange={(event) => setAmount(event.target.valueAsNumber)} />
       </label>}
+      {canLeaveCard && <p>The other player can buy it for $1 or pass.</p>}
       {!range && <p>Your budget can’t cover a higher offer. Pass to settle the card.</p>}
       <div className="game-actions">
-        <Button variant="secondary" onClick={() => dispatch({ type: 'PASS' })}>Pass</Button>
+        <Button variant="secondary" onClick={() => dispatch({ type: 'PASS' })}>{canLeaveCard ? 'Leave it to other player' : 'Pass'}</Button>
         <Button disabled={!range} onClick={() => dispatch({ type: 'RAISE', amount })}><Plus size={17} aria-hidden="true" />
           {opening ? lastChance ? 'Buy for $1' : 'Open at $1' : range ? `Raise to $${amount}` : 'Raise'}
         </Button>
